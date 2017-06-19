@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Software Development Kit &#8212; Project 0.1.0-a8905e1 2017-06-19 documentation</title>
+    <title>Source code repository directory structure &#8212; Project 0.1.0-a8905e1 2017-06-19 documentation</title>
     
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -26,7 +26,6 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="prev" title="Continuous integration and deployment" href="../ci-and-cd/index.html" />
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
   
@@ -42,43 +41,8 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="software-development-kit">
-<h1>Software Development Kit<a class="headerlink" href="#software-development-kit" title="Permalink to this headline">¶</a></h1>
-<p>PELUX provides a Software Development Kit (SDK), for quick and easy development of software components for a PELUX (or PELUX-based) system. The SDK is mainly targeted towards service implementers but can be used for developing applications and other kinds of software components as well. The SDK installer script can be downloaded from <a class="reference external" href="http://pelux.io/downloads">PELUX website</a>. Each SDK installer is for a specific target hardware platform.</p>
-<p>TBD: Information on how to use the SDK.</p>
-<div class="section" id="template-service">
-<h2>Template Service<a class="headerlink" href="#template-service" title="Permalink to this headline">¶</a></h2>
-<p>The template service serves as an example <a class="reference external" href="https://cmake.org/">CMake</a> project for service
-developers that should be used as a starting point while creating platform
-services, as well as as a set of guidelines to follow in source
-repositories. The guidelines described are not set-in-stone. Also, in
-general consistency is better than getting stuck on difficult-to-apply
-guidelines so please use these to an extent which is reasonable. The point
-is to support a common pattern within the project.</p>
-<p>To acquire the template service source code the user needs to fetch the
-code from github.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>git clone https://github.com/Pelagicore/template-service.git
-</pre></div>
-</div>
-<div class="section" id="compilation">
-<h3>Compilation<a class="headerlink" href="#compilation" title="Permalink to this headline">¶</a></h3>
-<p>In order to compile the template service the user needs to use the CMake
-build system. The CMake build system can be installed by following the
-instructions on the <a class="reference external" href="https://cmake.org/install/">CMake install webpage</a> or by using your Linux
-distribution’s package manager.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">cd</span> template-service
-mkdir build <span class="o">&amp;&amp;</span> <span class="nb">cd</span> build
-cmake .. <span class="o">&amp;&amp;</span> make -j4
-</pre></div>
-</div>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The example above presents how to compile the template service natively for your host machine.</p>
-</div>
-</div>
-</div>
-<div class="section" id="source-code-repository-directory-structure">
-<h2>Source code repository directory structure<a class="headerlink" href="#source-code-repository-directory-structure" title="Permalink to this headline">¶</a></h2>
+  <div class="section" id="source-code-repository-directory-structure">
+<h1>Source code repository directory structure<a class="headerlink" href="#source-code-repository-directory-structure" title="Permalink to this headline">¶</a></h1>
 <p>In order to make it easier to navigate through new repositories they
 should follow a common directory structure. The tree structure below
 shows a repository with two components sharing a ‘doc’ directory and
@@ -163,7 +127,7 @@ recommended to keep that document here as well, e.g. a UML model.</td>
 </tbody>
 </table>
 <div class="section" id="mandatory-files">
-<h3>Mandatory files<a class="headerlink" href="#mandatory-files" title="Permalink to this headline">¶</a></h3>
+<h2>Mandatory files<a class="headerlink" href="#mandatory-files" title="Permalink to this headline">¶</a></h2>
 <p>Certain files should be found in every repository, those files are described below.</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -207,14 +171,14 @@ Typically a library linked against such as libfoo would be listed while a compil
 </table>
 </div>
 <div class="section" id="directory-naming">
-<h3>Directory naming<a class="headerlink" href="#directory-naming" title="Permalink to this headline">¶</a></h3>
+<h2>Directory naming<a class="headerlink" href="#directory-naming" title="Permalink to this headline">¶</a></h2>
 <p>All directories should be lower case only, and using “-” as a separator
 between words. No other symbols other than [a..z], [0..9] and “-” are
 allowed. Exceptions are allowed if there is a technical need which is
 cumbersome to work around.</p>
 </div>
 <div class="section" id="file-naming">
-<h3>File naming<a class="headerlink" href="#file-naming" title="Permalink to this headline">¶</a></h3>
+<h2>File naming<a class="headerlink" href="#file-naming" title="Permalink to this headline">¶</a></h2>
 <p>The source code and header files should be named using lower case letters
 only, without any word separator. No other symbols other than [a..z] and
 [0..9] are allowed. C++ source files should be suffixed “.cpp” and header
@@ -229,7 +193,6 @@ corresponding unit test implemented in a file named
 </div>
 </div>
 </div>
-</div>
 
 
           </div>
@@ -239,17 +202,10 @@ corresponding unit test implemented in a file named
         <div class="sphinxsidebarwrapper">
   <h3><a href="../../index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Software Development Kit</a><ul>
-<li><a class="reference internal" href="#template-service">Template Service</a><ul>
-<li><a class="reference internal" href="#compilation">Compilation</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#source-code-repository-directory-structure">Source code repository directory structure</a><ul>
+<li><a class="reference internal" href="#">Source code repository directory structure</a><ul>
 <li><a class="reference internal" href="#mandatory-files">Mandatory files</a></li>
 <li><a class="reference internal" href="#directory-naming">Directory naming</a></li>
 <li><a class="reference internal" href="#file-naming">File naming</a></li>
-</ul>
-</li>
 </ul>
 </li>
 </ul>
@@ -257,14 +213,13 @@ corresponding unit test implemented in a file named
 <h3>Related Topics</h3>
 <ul>
   <li><a href="../../index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="../ci-and-cd/index.html" title="previous chapter">Continuous integration and deployment</a></li>
   </ul></li>
 </ul>
 </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../../_sources/chapters/sdk/index.rst.txt"
+      <li><a href="../../_sources/chapters/sdk/directory-structure.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
@@ -290,7 +245,7 @@ corresponding unit test implemented in a file named
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
       |
-      <a href="../../_sources/chapters/sdk/index.rst.txt"
+      <a href="../../_sources/chapters/sdk/directory-structure.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 
