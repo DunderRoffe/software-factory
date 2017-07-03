@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Continuous integration and deployment &#8212; Project 0.1.0-a8905e1 2017-06-19 documentation</title>
+    <title>Continuous integration and deployment &#8212; Project 0.1.0-30e718e 2017-07-03 documentation</title>
     
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.1.0-a8905e1 2017-06-19',
+        VERSION:     '0.1.0-30e718e 2017-07-03',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -75,7 +75,7 @@ manual steps that need to be performed when deploying this image. The <cite>repo
 more information see <a class="reference internal" href="../baseplatform/using-the-repo-tool.html#using-the-repo-tool"><span class="std std-ref">Using the repo tool</span></a></p>
 <p>Start by building the image:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>mkdir test-automation <span class="o">&amp;&amp;</span> <span class="nb">cd</span> test-automation
-repo init -u https://github.com/Pelagicore/pelux-manifests.git -m pelux-intel-qt.xml -b master
+repo init -u https://github.com/Pelagicore/pelux-manifests.git -m pelux-intel-qtauto.xml -b master
 repo sync
 <span class="nv">TEMPLATECONF</span><span class="o">=</span><span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span>/sources/meta-pelux-bsp-intel/conf-qt/ <span class="nb">source</span> sources/poky/oe-init-build-env build
 <span class="nb">echo</span> <span class="s1">&#39;EFI_PROVIDER = &quot;systemd-boot&quot;&#39;</span> &gt;&gt; conf/local.conf

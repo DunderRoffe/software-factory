@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Base Platform &#8212; Project 0.1.0-a8905e1 2017-06-19 documentation</title>
+    <title>Base Platform &#8212; Project 0.1.0-30e718e 2017-07-03 documentation</title>
     
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.1.0-a8905e1 2017-06-19',
+        VERSION:     '0.1.0-30e718e 2017-07-03',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -100,13 +100,13 @@ chmod a+x ~/bin/repo
 <p>The following manifests can be used for a build:</p>
 <ul class="simple">
 <li><cite>pelux-intel.xml</cite> - For building the <cite>core-image-pelux</cite> image for Intel</li>
-<li><cite>pelux-intel-qt.xml</cite> - For building the <cite>core-image-pelux-qt</cite> image, which is the baseline with <a class="reference external" href="https://www.qt.io/qt-automotive-suite/">Qt Automotive Suite</a></li>
+<li><cite>pelux-intel-qtauto.xml</cite> - For building the <cite>core-image-pelux-qtauto</cite> image, which is the baseline with <a class="reference external" href="https://www.qt.io/qt-automotive-suite/">Qt Automotive Suite</a></li>
 <li><cite>pelux-rpi.xml</cite> - For building the <cite>core-image-pelux</cite> image for Raspberry Pi 3</li>
 </ul>
 <p>Variables:</p>
 <ul class="simple">
 <li>Manifest, refers to what <cite>&lt;manifest-name&gt;.xml</cite> file you want to use, for example <cite>pelux-intel.xml</cite>. Each hardware platform targeted by the PELUX reference has its own manifest describing what other git repositories are needed for the build.</li>
-<li>Image, refers to what version of PELUX should be built. Currently there are two versions: <cite>core-image-pelux</cite> and <cite>core-image-pelux-qt</cite>. The latter being a version that includes <a class="reference external" href="https://www.qt.io/qt-automotive-suite/">Qt Automotive Suite</a> components that enable the NeptuneUI demo application.</li>
+<li>Image, refers to what version of PELUX should be built. Currently there are two versions: <cite>core-image-pelux</cite> and <cite>core-image-pelux-qtauto</cite>. The latter being a version that includes <a class="reference external" href="https://www.qt.io/qt-automotive-suite/">Qt Automotive Suite</a> components that enable the NeptuneUI demo application.</li>
 </ul>
 <p>Create a directory for the PELUX build. Instruct repo tool to fetch a manifest using the command <cite>repo init</cite>. In this context, branch denotes what branch of git repo <cite>pelux-manifests</cite> to use. Then make repo tool fetch all sources using the command <cite>repo sync</cite>.</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>mkdir pelux
