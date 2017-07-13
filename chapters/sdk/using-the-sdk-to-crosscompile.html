@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Template Service &#8212; Project 0.1.0-fc45f0d 2017-07-13 documentation</title>
+    <title>Using the SDK to cross compile &#8212; Project 0.1.0-fc45f0d 2017-07-13 documentation</title>
     
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -41,35 +41,27 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="template-service">
-<h1>Template Service<a class="headerlink" href="#template-service" title="Permalink to this headline">¶</a></h1>
-<p>The template service serves as an example <a class="reference external" href="https://cmake.org/">CMake</a> project for service
-developers that should be used as a starting point while creating platform
-services, as well as as a set of guidelines to follow in source
-repositories. The guidelines described are not set-in-stone. Also, in
-general consistency is better than getting stuck on difficult-to-apply
-guidelines so please use these to an extent which is reasonable. The point
-is to support a common pattern within the project.</p>
-<p>To acquire the template service source code the user needs to fetch the
-code from github.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>git clone https://github.com/Pelagicore/template-service.git
+  <div class="section" id="using-the-sdk-to-cross-compile">
+<h1>Using the SDK to cross compile<a class="headerlink" href="#using-the-sdk-to-cross-compile" title="Permalink to this headline">¶</a></h1>
+<p>Cross compiling with the help of the SDK is not much different from normal compilation. There are some more pitfalls, but let&#8217;s get on with the happy cases for now.</p>
+<div class="section" id="sourcing-environment">
+<h2>Sourcing Environment<a class="headerlink" href="#sourcing-environment" title="Permalink to this headline">¶</a></h2>
+<p>After the installation the SDK it needs to be sourced. This means that the SDK toolchain and the sysroot environment variables will be set in your active terminal session.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/sdk
+<span class="nb">source</span> environment-setup-corei7-64-poky-linux
 </pre></div>
 </div>
-<div class="section" id="compilation">
-<span id="template-service-compilation-label"></span><h2>Compilation<a class="headerlink" href="#compilation" title="Permalink to this headline">¶</a></h2>
-<p>In order to compile the template service the user needs to use the CMake
-build system. The CMake build system can be installed by following the
-instructions on the <a class="reference external" href="https://cmake.org/install/">CMake install webpage</a> or by using your Linux
-distribution&#8217;s package manager.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">cd</span> template-service
-mkdir build <span class="o">&amp;&amp;</span> <span class="nb">cd</span> build
-cmake .. <span class="o">&amp;&amp;</span> make -j4
+<p>To check if the environment has already been sourced grep for variables which start with <cite>OECORE</cite> in the environment for example like this:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>env <span class="p">|</span> grep OECORE
+<span class="nv">OECORE_DISTRO_VERSION</span><span class="o">=</span><span class="m">2</span>.2.1
+<span class="nv">OECORE_SDK_VERSION</span><span class="o">=</span><span class="m">2</span>.2.1
 </pre></div>
 </div>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The example above presents how to compile the template service natively for your host machine.</p>
+<p>This means that the environment has been sourced.</p>
 </div>
+<div class="section" id="cross-compiling">
+<h2>Cross Compiling<a class="headerlink" href="#cross-compiling" title="Permalink to this headline">¶</a></h2>
+<p>In the easiest case, when all the projects dependencies are already installed in the SDK, crosscompiling is really easy. Navigate in to the directory and use cmake and make to compile it as you normally would (see <a class="reference internal" href="template-service.html#template-service-compilation-label"><span class="std std-ref">Compilation</span></a>). The environment will make sure that the right compiler and cmake will be used.</p>
 </div>
 </div>
 
@@ -81,8 +73,9 @@ cmake .. <span class="o">&amp;&amp;</span> make -j4
         <div class="sphinxsidebarwrapper">
   <h3><a href="../../index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Template Service</a><ul>
-<li><a class="reference internal" href="#compilation">Compilation</a></li>
+<li><a class="reference internal" href="#">Using the SDK to cross compile</a><ul>
+<li><a class="reference internal" href="#sourcing-environment">Sourcing Environment</a></li>
+<li><a class="reference internal" href="#cross-compiling">Cross Compiling</a></li>
 </ul>
 </li>
 </ul>
@@ -96,7 +89,7 @@ cmake .. <span class="o">&amp;&amp;</span> make -j4
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../../_sources/chapters/sdk/template-service.rst.txt"
+      <li><a href="../../_sources/chapters/sdk/using-the-sdk-to-crosscompile.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
@@ -122,7 +115,7 @@ cmake .. <span class="o">&amp;&amp;</span> make -j4
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
       |
-      <a href="../../_sources/chapters/sdk/template-service.rst.txt"
+      <a href="../../_sources/chapters/sdk/using-the-sdk-to-crosscompile.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

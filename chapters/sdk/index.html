@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Software Development Kit &#8212; Project 0.1.0-8c70433 2017-07-13 documentation</title>
+    <title>Software Development Kit &#8212; Project 0.1.0-fc45f0d 2017-07-13 documentation</title>
     
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.1.0-8c70433 2017-07-13',
+        VERSION:     '0.1.0-fc45f0d 2017-07-13',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -45,7 +45,57 @@
   <div class="section" id="software-development-kit">
 <h1>Software Development Kit<a class="headerlink" href="#software-development-kit" title="Permalink to this headline">¶</a></h1>
 <p>PELUX provides a Software Development Kit (SDK), for quick and easy development of software components for a PELUX (or PELUX-based) system. The SDK is mainly targeted towards service implementers but can be used for developing applications and other kinds of software components as well. The SDK installer script can be downloaded from <a class="reference external" href="http://pelux.io/downloads">PELUX website</a>. Each SDK installer is for a specific target hardware platform.</p>
-<p>TBD: Information on how to use the SDK.</p>
+<div class="section" id="downloading-and-installing-the-sdk">
+<h2>Downloading and installing the SDK<a class="headerlink" href="#downloading-and-installing-the-sdk" title="Permalink to this headline">¶</a></h2>
+<p>Download the SDK for your hardware from the <a class="reference external" href="http://pelux.io/downloads">PELUX website</a>. The SDK is a very huge file as it contains tho whole sysroot for the project in addition to some native tools. Depending on the internet connectivity speed it could take a while.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Note that the version number at the end of the SDK download file is not the version of the SDK but in fact the version number of poky, which is the upstream Yocto distribution PELUX is using.</p>
+</div>
+<div class="section" id="installing-the-sdk">
+<h3>Installing the SDK<a class="headerlink" href="#installing-the-sdk" title="Permalink to this headline">¶</a></h3>
+<p>When the SDK has been downloaded from a HTTP server then per default is not executable. This needs to be changed with <cite>chmod</cite>.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/Downloads
+chmod +x poky-glibc-x86_64-core-image-pelux-qt-corei7-64-toolchain-2.2.1.sh
+</pre></div>
+</div>
+<p>It is a self extracting shell script which can be executed. This will start an interactive program which first asks where to install the SDK. The easiest way is to install it in your <cite>home</cite> directory in it&#8217;s own directory, like <cite>~/sdk</cite>, instead of the default which is <cite>/opt</cite>. <cite>/opt</cite> is most probably not prepared for your user to install anything into.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>➜ jdoe@tux Downloads ./poky-glibc-x86_64-core-image-pelux-qt-corei7-64-toolchain-2.2.1.sh
+Poky <span class="o">(</span>Yocto Project Reference Distro<span class="o">)</span> SDK installer version <span class="m">2</span>.2.1
+<span class="o">=================================================================</span>
+Enter target directory <span class="k">for</span> SDK <span class="o">(</span>default: /opt/poky/2.2.1<span class="o">)</span>: ~/sdk
+You are about to install the SDK to <span class="s2">&quot;/home/jdoe/sdk&quot;</span>. Proceed<span class="o">[</span>Y/n<span class="o">]</span>? Y
+Extracting SDK.............done
+Setting it up...done
+SDK has been successfully <span class="nb">set</span> up and is ready to be used.
+</pre></div>
+</div>
+<p>Now the SDK is installed and can be used.</p>
+</div>
+</div>
+<div class="section" id="using-the-sdk-to-cross-compile">
+<h2>Using the SDK to cross compile<a class="headerlink" href="#using-the-sdk-to-cross-compile" title="Permalink to this headline">¶</a></h2>
+<p>Cross compiling with the help of the SDK is not much different from normal compilation. There are some more pitfalls, but let&#8217;s get on with the happy cases for now.</p>
+<div class="section" id="sourcing-environment">
+<h3>Sourcing Environment<a class="headerlink" href="#sourcing-environment" title="Permalink to this headline">¶</a></h3>
+<p>After the installation the SDK it needs to be sourced. This means that the SDK toolchain and the sysroot environment variables will be set in your active terminal session.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/sdk
+<span class="nb">source</span> environment-setup-corei7-64-poky-linux
+</pre></div>
+</div>
+<p>To check if the environment has already been sourced grep for variables which start with <cite>OECORE</cite> in the environment for example like this:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>env <span class="p">|</span> grep OECORE
+<span class="nv">OECORE_DISTRO_VERSION</span><span class="o">=</span><span class="m">2</span>.2.1
+<span class="nv">OECORE_SDK_VERSION</span><span class="o">=</span><span class="m">2</span>.2.1
+</pre></div>
+</div>
+<p>This means that the environment has been sourced.</p>
+</div>
+<div class="section" id="cross-compiling">
+<h3>Cross Compiling<a class="headerlink" href="#cross-compiling" title="Permalink to this headline">¶</a></h3>
+<p>In the easiest case, when all the projects dependencies are already installed in the SDK, crosscompiling is really easy. Navigate in to the directory and use cmake and make to compile it as you normally would (see <a class="reference internal" href="template-service.html#template-service-compilation-label"><span class="std std-ref">Compilation</span></a>). The environment will make sure that the right compiler and cmake will be used.</p>
+</div>
+</div>
 <div class="section" id="template-service">
 <h2>Template Service<a class="headerlink" href="#template-service" title="Permalink to this headline">¶</a></h2>
 <p>The template service serves as an example <a class="reference external" href="https://cmake.org/">CMake</a> project for service
@@ -61,7 +111,7 @@ code from github.</p>
 </pre></div>
 </div>
 <div class="section" id="compilation">
-<h3>Compilation<a class="headerlink" href="#compilation" title="Permalink to this headline">¶</a></h3>
+<span id="template-service-compilation-label"></span><h3>Compilation<a class="headerlink" href="#compilation" title="Permalink to this headline">¶</a></h3>
 <p>In order to compile the template service the user needs to use the CMake
 build system. The CMake build system can be installed by following the
 instructions on the <a class="reference external" href="https://cmake.org/install/">CMake install webpage</a> or by using your Linux
@@ -240,6 +290,15 @@ corresponding unit test implemented in a file named
   <h3><a href="../../index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Software Development Kit</a><ul>
+<li><a class="reference internal" href="#downloading-and-installing-the-sdk">Downloading and installing the SDK</a><ul>
+<li><a class="reference internal" href="#installing-the-sdk">Installing the SDK</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#using-the-sdk-to-cross-compile">Using the SDK to cross compile</a><ul>
+<li><a class="reference internal" href="#sourcing-environment">Sourcing Environment</a></li>
+<li><a class="reference internal" href="#cross-compiling">Cross Compiling</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#template-service">Template Service</a><ul>
 <li><a class="reference internal" href="#compilation">Compilation</a></li>
 </ul>

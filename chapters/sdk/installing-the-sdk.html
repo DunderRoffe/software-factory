@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Using the repo tool &#8212; Project 0.1.0-fc45f0d 2017-07-13 documentation</title>
+    <title>Downloading and installing the SDK &#8212; Project 0.1.0-fc45f0d 2017-07-13 documentation</title>
     
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -41,33 +41,32 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="using-the-repo-tool">
-<span id="id1"></span><h1>Using the repo tool<a class="headerlink" href="#using-the-repo-tool" title="Permalink to this headline">¶</a></h1>
-<p>The <code class="docutils literal"><span class="pre">repo</span></code> tool is used to obtain the sources of a PELUX release. <code class="docutils literal"><span class="pre">repo</span></code> was originally developed by the Android <a class="footnote-reference" href="#android" id="id2">[1]</a> project, and it is used to clone specific versions of git repositories into specific locations.</p>
-<div class="section" id="obtaining-the-repo-tool">
-<h2>Obtaining the repo tool<a class="headerlink" href="#obtaining-the-repo-tool" title="Permalink to this headline">¶</a></h2>
-<p>If you already have a directory in your <code class="docutils literal"><span class="pre">$PATH</span></code> for placing user-specific runnables, you should use that location; otherwise perform the following steps to add <code class="docutils literal"><span class="pre">~/bin</span></code> (or any directory of your choice) to your <code class="docutils literal"><span class="pre">$PATH</span></code>:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>mkdir ~/bin
-<span class="nb">echo</span> <span class="s2">&quot;export PATH=~/bin/:</span><span class="nv">$PATH</span><span class="s2">&quot;</span> &gt;&gt; ~/.bashrc
-bash <span class="c1"># needed to reload the ~/.bashrc</span>
-</pre></div>
-</div>
+  <div class="section" id="downloading-and-installing-the-sdk">
+<h1>Downloading and installing the SDK<a class="headerlink" href="#downloading-and-installing-the-sdk" title="Permalink to this headline">¶</a></h1>
+<p>Download the SDK for your hardware from the <a class="reference external" href="http://pelux.io/downloads">PELUX website</a>. The SDK is a very huge file as it contains tho whole sysroot for the project in addition to some native tools. Depending on the internet connectivity speed it could take a while.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">You need to replace <code class="docutils literal"><span class="pre">~/.bashrc</span></code> with the correct rc-file for your shell.</p>
+<p class="last">Note that the version number at the end of the SDK download file is not the version of the SDK but in fact the version number of poky, which is the upstream Yocto distribution PELUX is using.</p>
 </div>
-<p>Then download the repo tool binary to <code class="docutils literal"><span class="pre">~/bin</span></code>:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>curl https://storage.googleapis.com/git-repo-downloads/repo &gt; ~/bin/repo
-chmod a+x ~/bin/repo
+<div class="section" id="installing-the-sdk">
+<h2>Installing the SDK<a class="headerlink" href="#installing-the-sdk" title="Permalink to this headline">¶</a></h2>
+<p>When the SDK has been downloaded from a HTTP server then per default is not executable. This needs to be changed with <cite>chmod</cite>.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/Downloads
+chmod +x poky-glibc-x86_64-core-image-pelux-qt-corei7-64-toolchain-2.2.1.sh
 </pre></div>
 </div>
-<p>The <code class="docutils literal"><span class="pre">repo</span></code> command should now be available from your shell.</p>
-<table class="docutils footnote" frame="void" id="android" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id2">[1]</a></td><td><a class="reference external" href="http://source.android.com">http://source.android.com</a></td></tr>
-</tbody>
-</table>
+<p>It is a self extracting shell script which can be executed. This will start an interactive program which first asks where to install the SDK. The easiest way is to install it in your <cite>home</cite> directory in it&#8217;s own directory, like <cite>~/sdk</cite>, instead of the default which is <cite>/opt</cite>. <cite>/opt</cite> is most probably not prepared for your user to install anything into.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>➜ jdoe@tux Downloads ./poky-glibc-x86_64-core-image-pelux-qt-corei7-64-toolchain-2.2.1.sh
+Poky <span class="o">(</span>Yocto Project Reference Distro<span class="o">)</span> SDK installer version <span class="m">2</span>.2.1
+<span class="o">=================================================================</span>
+Enter target directory <span class="k">for</span> SDK <span class="o">(</span>default: /opt/poky/2.2.1<span class="o">)</span>: ~/sdk
+You are about to install the SDK to <span class="s2">&quot;/home/jdoe/sdk&quot;</span>. Proceed<span class="o">[</span>Y/n<span class="o">]</span>? Y
+Extracting SDK.............done
+Setting it up...done
+SDK has been successfully <span class="nb">set</span> up and is ready to be used.
+</pre></div>
+</div>
+<p>Now the SDK is installed and can be used.</p>
 </div>
 </div>
 
@@ -79,8 +78,8 @@ chmod a+x ~/bin/repo
         <div class="sphinxsidebarwrapper">
   <h3><a href="../../index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Using the repo tool</a><ul>
-<li><a class="reference internal" href="#obtaining-the-repo-tool">Obtaining the repo tool</a></li>
+<li><a class="reference internal" href="#">Downloading and installing the SDK</a><ul>
+<li><a class="reference internal" href="#installing-the-sdk">Installing the SDK</a></li>
 </ul>
 </li>
 </ul>
@@ -94,7 +93,7 @@ chmod a+x ~/bin/repo
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../../_sources/chapters/baseplatform/using-the-repo-tool.rst.txt"
+      <li><a href="../../_sources/chapters/sdk/installing-the-sdk.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
@@ -120,7 +119,7 @@ chmod a+x ~/bin/repo
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
       |
-      <a href="../../_sources/chapters/baseplatform/using-the-repo-tool.rst.txt"
+      <a href="../../_sources/chapters/sdk/installing-the-sdk.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 
