@@ -1,12 +1,12 @@
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Base Platform &#8212; Project 0.1.0-30e718e 2017-07-03 documentation</title>
+    <title>Base Platform &#8212; Project 0.1.0-8c70433 2017-07-13 documentation</title>
     
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.1.0-30e718e 2017-07-03',
+        VERSION:     '0.1.0-8c70433 2017-07-13',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -35,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body>
+  <body role="document">
   
 
     <div class="document">
@@ -130,6 +130,43 @@ repo sync
 </div>
 <p>When the build is complete the result will be available in <code class="docutils literal"><span class="pre">tmp/deploy/images/&lt;machine&gt;/</span></code>. It is possible to generate a number of different image formats, ranging from just the rootfs as a tarball to ready disk-images containing EFI-bootloader, configuration and rootfs and that can be written directly to a storage device. For PELUX, the preffered format for the Intel NUC are .wic images, which are complete disk-images.</p>
 </div>
+<div class="section" id="writing-the-image">
+<h2>Writing the image<a class="headerlink" href="#writing-the-image" title="Permalink to this headline">¶</a></h2>
+<p>This section describes how to write the build output, a ready disk-image, to a removable media. Further information can be found in the <a class="reference external" href="http://git.yoctoproject.org/cgit.cgi/poky/tree/README.hardware">Poky documentation</a>.</p>
+<div class="section" id="nuc-minnowboard">
+<h3>NUC / Minnowboard<a class="headerlink" href="#nuc-minnowboard" title="Permalink to this headline">¶</a></h3>
+<p>Use the <code class="docutils literal"><span class="pre">dd</span></code> utility to write the image to the raw block device. For example:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>dd <span class="k">if</span><span class="o">=</span>core-image-pelux-intel-corei7-64.wic <span class="nv">of</span><span class="o">=</span>&lt;host-device&gt; <span class="nv">bs</span><span class="o">=</span>4M
+</pre></div>
+</div>
+</div>
+<div class="section" id="raspberry-pi-3">
+<h3>Raspberry Pi 3<a class="headerlink" href="#raspberry-pi-3" title="Permalink to this headline">¶</a></h3>
+<p>Write the generated image file to an SD-card using e.g.:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>dd <span class="k">if</span><span class="o">=</span>core-image-pelux-raspberrypi3.rpi-sdimg <span class="nv">of</span><span class="o">=</span>&lt;host-device&gt; <span class="nv">bs</span><span class="o">=</span>4M
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The <code class="docutils literal"><span class="pre">&lt;host-device&gt;</span></code> is the SD-card or other removable media device on the host, e.g. <code class="docutils literal"><span class="pre">/dev/mmcblk0</span></code> or <code class="docutils literal"><span class="pre">/dev/sdc</span></code>. More information on how to discover the SD-card or other media device can be found in the <a class="reference external" href="https://www.raspberrypi.org/documentation/installation/installing-images/linux.md">following documentation</a>.</p>
+</div>
+</div>
+</div>
+<div class="section" id="booting-on-target-hardware">
+<h2>Booting on target hardware<a class="headerlink" href="#booting-on-target-hardware" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="nuc">
+<h3>NUC<a class="headerlink" href="#nuc" title="Permalink to this headline">¶</a></h3>
+<p>Plug in the USB-stick and boot the target, make sure to configure EFI to boot from USB. No other actions should be needed.</p>
+</div>
+<div class="section" id="id3">
+<h3>Raspberry Pi 3<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>Insert the SD-card into the Raspberry Pi and boot it up.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Login as user <code class="docutils literal"><span class="pre">root</span></code>.</p>
+</div>
+</div>
+</div>
 </div>
 
 
@@ -150,6 +187,16 @@ repo sync
 </ul>
 </li>
 <li><a class="reference internal" href="#obtaining-a-pelux-release">Obtaining a PELUX release</a></li>
+<li><a class="reference internal" href="#writing-the-image">Writing the image</a><ul>
+<li><a class="reference internal" href="#nuc-minnowboard">NUC / Minnowboard</a></li>
+<li><a class="reference internal" href="#raspberry-pi-3">Raspberry Pi 3</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#booting-on-target-hardware">Booting on target hardware</a><ul>
+<li><a class="reference internal" href="#nuc">NUC</a></li>
+<li><a class="reference internal" href="#id3">Raspberry Pi 3</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -187,7 +234,7 @@ repo sync
       &copy;Pelagicore AB.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.2</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.5</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
       |
