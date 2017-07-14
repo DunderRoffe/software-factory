@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Software Development Kit &#8212; Project 0.1.0-fc45f0d 2017-07-13 documentation</title>
+    <title>Software Development Kit &#8212; Project 0.1.0-f0ffae9 2017-07-14 documentation</title>
     
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.1.0-fc45f0d 2017-07-13',
+        VERSION:     '0.1.0-f0ffae9 2017-07-14',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -279,6 +279,23 @@ corresponding unit test implemented in a file named
 </div>
 </div>
 </div>
+<div class="section" id="deploying-and-running-a-binary-executable-on-target">
+<h2>Deploying and running a binary executable on target<a class="headerlink" href="#deploying-and-running-a-binary-executable-on-target" title="Permalink to this headline">¶</a></h2>
+<p>Once the binary has been cross compiled, it needs to be installed on the target. To do so the easiest way is to use SSH. For that to work you need to know the IP address of your target.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The <a class="reference external" href="https://www.raspberrypi.org/documentation/remote-access/ip-address.md">Raspberry Pi documentation</a> describes how to find a new device on the network. Finding the IP address for our device will work in the same manner.</p>
+</div>
+<p>The default user on the PELUX image is <cite>root</cite> and it doesn&#8217;t ask for a password logging in via SSH. Use <cite>scp</cite> to copy your binary to the target.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>scp build/template-service root@&lt;ip address&gt;:
+</pre></div>
+</div>
+<p>Now that the binary file has been copied to the target it can be run there.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>ssh root@&lt;ip address&gt;
+./template-service
+</pre></div>
+</div>
+</div>
 </div>
 
 
@@ -309,6 +326,7 @@ corresponding unit test implemented in a file named
 <li><a class="reference internal" href="#file-naming">File naming</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#deploying-and-running-a-binary-executable-on-target">Deploying and running a binary executable on target</a></li>
 </ul>
 </li>
 </ul>
