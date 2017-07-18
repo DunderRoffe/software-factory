@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Downloading and installing the SDK &mdash; Project 0.1.0-de05fe0 2017-07-18 documentation</title>
+  <title>Building the SDK installer &mdash; Project 0.1.0-de05fe0 2017-07-18 documentation</title>
   
 
   
@@ -86,9 +86,9 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../intro/index.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../workflow/git-workflow.html">Git workflow</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../baseplatform/index.html">Base Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Base Platform</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ci-and-cd/index.html">Continuous integration and deployment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="index.html">Software Development Kit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sdk/index.html">Software Development Kit</a></li>
 </ul>
 
             
@@ -119,11 +119,11 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../../index.html">Docs</a> &raquo;</li>
       
-    <li>Downloading and installing the SDK</li>
+    <li>Building the SDK installer</li>
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="../../_sources/chapters/sdk/installing-the-sdk.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/chapters/baseplatform/creating-sdk.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -133,33 +133,17 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="downloading-and-installing-the-sdk">
-<h1>Downloading and installing the SDK<a class="headerlink" href="#downloading-and-installing-the-sdk" title="Permalink to this headline">¶</a></h1>
-<p>Download the SDK for your hardware from the <a class="reference external" href="http://pelux.io/downloads">PELUX website</a>. The SDK is a very huge file as it contains tho whole sysroot for the project in addition to some native tools. Depending on the internet connectivity speed it could take a while.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Note that the version number at the end of the SDK download file is not the version of the SDK but in fact the version number of poky, which is the upstream Yocto distribution PELUX is using.</p>
-</div>
-<div class="section" id="installing-the-sdk">
-<span id="installing-sdk"></span><h2>Installing the SDK<a class="headerlink" href="#installing-the-sdk" title="Permalink to this headline">¶</a></h2>
-<p>When the SDK has been downloaded from a HTTP server then per default is not executable. This needs to be changed with <cite>chmod</cite>.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/Downloads
-chmod +x poky-glibc-x86_64-core-image-pelux-qt-corei7-64-toolchain-2.2.1.sh
+  <div class="section" id="building-the-sdk-installer">
+<h1>Building the SDK installer<a class="headerlink" href="#building-the-sdk-installer" title="Permalink to this headline">¶</a></h1>
+<p>Building the SDK installer is not very different from creating the corresponding
+target image. All you have to do, is pass an additional option to bitbake:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>bitbake -c populate_sdk &lt;image&gt;
 </pre></div>
 </div>
-<p>It is a self extracting shell script which can be executed. This will start an interactive program which first asks where to install the SDK. The easiest way is to install it in your <cite>home</cite> directory in it’s own directory, like <cite>~/sdk</cite>, instead of the default which is <cite>/opt</cite>. <cite>/opt</cite> is most probably not prepared for your user to install anything into.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>➜ jdoe@tux Downloads ./poky-glibc-x86_64-core-image-pelux-qt-corei7-64-toolchain-2.2.1.sh
-Poky <span class="o">(</span>Yocto Project Reference Distro<span class="o">)</span> SDK installer version <span class="m">2</span>.2.1
-<span class="o">=================================================================</span>
-Enter target directory <span class="k">for</span> SDK <span class="o">(</span>default: /opt/poky/2.2.1<span class="o">)</span>: ~/sdk
-You are about to install the SDK to <span class="s2">&quot;/home/jdoe/sdk&quot;</span>. Proceed<span class="o">[</span>Y/n<span class="o">]</span>? Y
-Extracting SDK.............done
-Setting it up...done
-SDK has been successfully <span class="nb">set</span> up and is ready to be used.
-</pre></div>
-</div>
-<p>Now the SDK is installed and can be used.</p>
-</div>
+<p>This command will create a toolchain installer that contains the sysroot that
+matches your target root filesystem. The installer will be created in
+tmp/deploy/sdk directory. Please refer to <a class="reference internal" href="../sdk/installing-the-sdk.html#installing-sdk"><span class="std std-ref">Installing the SDK</span></a> for setup and
+usage of the generated SDK installer.</p>
 </div>
 
 

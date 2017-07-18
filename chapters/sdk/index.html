@@ -1,46 +1,160 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>Software Development Kit &#8212; Project 0.1.0-f0ffae9 2017-07-14 documentation</title>
-    
-    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../../',
-        VERSION:     '0.1.0-f0ffae9 2017-07-14',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
-    <script type="text/javascript" src="../../_static/jquery.js"></script>
-    <script type="text/javascript" src="../../_static/underscore.js"></script>
-    <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" />
-    <link rel="prev" title="Continuous integration and deployment" href="../ci-and-cd/index.html" />
-   
-  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
   
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
-
-  </head>
-  <body role="document">
+  <title>Software Development Kit &mdash; Project 0.1.0-de05fe0 2017-07-18 documentation</title>
   
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="Project 0.1.0-de05fe0 2017-07-18 documentation" href="../../index.html"/>
+        <link rel="prev" title="Continuous integration and deployment" href="../ci-and-cd/index.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Project
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Table of contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../workflow/git-workflow.html">Git workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../baseplatform/index.html">Base Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ci-and-cd/index.html">Continuous integration and deployment</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Software Development Kit</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#downloading-and-installing-the-sdk">Downloading and installing the SDK</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#installing-the-sdk">Installing the SDK</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#using-the-sdk-to-cross-compile">Using the SDK to cross compile</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#sourcing-environment">Sourcing Environment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cross-compiling">Cross Compiling</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#template-service">Template Service</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#compilation">Compilation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#source-code-repository-directory-structure">Source code repository directory structure</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#mandatory-files">Mandatory files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#directory-naming">Directory naming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#file-naming">File naming</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#deploying-and-running-a-binary-executable-on-target">Deploying and running a binary executable on target</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">Project</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+    <li>Software Development Kit</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/chapters/sdk/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
             
   <div class="section" id="software-development-kit">
 <h1>Software Development Kit<a class="headerlink" href="#software-development-kit" title="Permalink to this headline">¶</a></h1>
@@ -53,13 +167,13 @@
 <p class="last">Note that the version number at the end of the SDK download file is not the version of the SDK but in fact the version number of poky, which is the upstream Yocto distribution PELUX is using.</p>
 </div>
 <div class="section" id="installing-the-sdk">
-<h3>Installing the SDK<a class="headerlink" href="#installing-the-sdk" title="Permalink to this headline">¶</a></h3>
+<span id="installing-sdk"></span><h3>Installing the SDK<a class="headerlink" href="#installing-the-sdk" title="Permalink to this headline">¶</a></h3>
 <p>When the SDK has been downloaded from a HTTP server then per default is not executable. This needs to be changed with <cite>chmod</cite>.</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/Downloads
 chmod +x poky-glibc-x86_64-core-image-pelux-qt-corei7-64-toolchain-2.2.1.sh
 </pre></div>
 </div>
-<p>It is a self extracting shell script which can be executed. This will start an interactive program which first asks where to install the SDK. The easiest way is to install it in your <cite>home</cite> directory in it&#8217;s own directory, like <cite>~/sdk</cite>, instead of the default which is <cite>/opt</cite>. <cite>/opt</cite> is most probably not prepared for your user to install anything into.</p>
+<p>It is a self extracting shell script which can be executed. This will start an interactive program which first asks where to install the SDK. The easiest way is to install it in your <cite>home</cite> directory in it’s own directory, like <cite>~/sdk</cite>, instead of the default which is <cite>/opt</cite>. <cite>/opt</cite> is most probably not prepared for your user to install anything into.</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>➜ jdoe@tux Downloads ./poky-glibc-x86_64-core-image-pelux-qt-corei7-64-toolchain-2.2.1.sh
 Poky <span class="o">(</span>Yocto Project Reference Distro<span class="o">)</span> SDK installer version <span class="m">2</span>.2.1
 <span class="o">=================================================================</span>
@@ -75,7 +189,7 @@ SDK has been successfully <span class="nb">set</span> up and is ready to be used
 </div>
 <div class="section" id="using-the-sdk-to-cross-compile">
 <h2>Using the SDK to cross compile<a class="headerlink" href="#using-the-sdk-to-cross-compile" title="Permalink to this headline">¶</a></h2>
-<p>Cross compiling with the help of the SDK is not much different from normal compilation. There are some more pitfalls, but let&#8217;s get on with the happy cases for now.</p>
+<p>Cross compiling with the help of the SDK is not much different from normal compilation. There are some more pitfalls, but let’s get on with the happy cases for now.</p>
 <div class="section" id="sourcing-environment">
 <h3>Sourcing Environment<a class="headerlink" href="#sourcing-environment" title="Permalink to this headline">¶</a></h3>
 <p>After the installation the SDK it needs to be sourced. This means that the SDK toolchain and the sysroot environment variables will be set in your active terminal session.</p>
@@ -115,7 +229,7 @@ code from github.</p>
 <p>In order to compile the template service the user needs to use the CMake
 build system. The CMake build system can be installed by following the
 instructions on the <a class="reference external" href="https://cmake.org/install/">CMake install webpage</a> or by using your Linux
-distribution&#8217;s package manager.</p>
+distribution’s package manager.</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">cd</span> template-service
 mkdir build <span class="o">&amp;&amp;</span> <span class="nb">cd</span> build
 cmake .. <span class="o">&amp;&amp;</span> make -j4
@@ -131,8 +245,8 @@ cmake .. <span class="o">&amp;&amp;</span> make -j4
 <h2>Source code repository directory structure<a class="headerlink" href="#source-code-repository-directory-structure" title="Permalink to this headline">¶</a></h2>
 <p>In order to make it easier to navigate through new repositories they
 should follow a common directory structure. The tree structure below
-shows a repository with two components sharing a &#8216;doc&#8217; directory and
-&#8216;component-test&#8217; directory. Many repos will likely contain only one
+shows a repository with two components sharing a ‘doc’ directory and
+‘component-test’ directory. Many repos will likely contain only one
 component, in which case the structure should be the same but with only
 one subdirectory with the source code etc.</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>.
@@ -161,9 +275,9 @@ one subdirectory with the source code etc.</p>
 </pre></div>
 </div>
 <p>The table below describes the directories and their purpose. The
-&lt;component-subdir&gt; represents e.g. the &#8216;component-A&#8217; or &#8216;component-B&#8217;
+&lt;component-subdir&gt; represents e.g. the ‘component-A’ or ‘component-B’
 directories in the tree structure above. Some directories are only
-relevant in some situations, e.g. a &#8216;test-data&#8217; dir is only relevant
+relevant in some situations, e.g. a ‘test-data’ dir is only relevant
 if there is any actual test data of course.</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -180,7 +294,7 @@ if there is any actual test data of course.</p>
 <td>Contains e.g. utility scripts that might be needed to e.g. set up an environment or such like.</td>
 </tr>
 <tr class="row-odd"><td>cmake_modules</td>
-<td>Contains any CMake &#8216;find&#8217; modules.</td>
+<td>Contains any CMake ‘find’ modules.</td>
 </tr>
 <tr class="row-even"><td>doc</td>
 <td>Contains doxygen files for generating reference documentation that is not part of any class
@@ -228,7 +342,7 @@ recommended to keep that document here as well, e.g. a UML model.</td>
 <tbody valign="top">
 <tr class="row-even"><td>README(.md)</td>
 <td>A top-level README giving a brief introduction to the repository.
-How to build, how to run tests, other &#8220;good to know&#8221; information.
+How to build, how to run tests, other “good to know” information.
 The .md suffix for markdown syntax may be used.</td>
 </tr>
 <tr class="row-odd"><td>LICENSE</td>
@@ -258,8 +372,8 @@ Typically a library linked against such as libfoo would be listed while a compil
 </div>
 <div class="section" id="directory-naming">
 <h3>Directory naming<a class="headerlink" href="#directory-naming" title="Permalink to this headline">¶</a></h3>
-<p>All directories should be lower case only, and using &#8220;-&#8221; as a separator
-between words. No other symbols other than [a..z], [0..9] and &#8220;-&#8221; are
+<p>All directories should be lower case only, and using “-” as a separator
+between words. No other symbols other than [a..z], [0..9] and “-” are
 allowed. Exceptions are allowed if there is a technical need which is
 cumbersome to work around.</p>
 </div>
@@ -267,12 +381,12 @@ cumbersome to work around.</p>
 <h3>File naming<a class="headerlink" href="#file-naming" title="Permalink to this headline">¶</a></h3>
 <p>The source code and header files should be named using lower case letters
 only, without any word separator. No other symbols other than [a..z] and
-[0..9] are allowed. C++ source files should be suffixed &#8221;.cpp&#8221; and header
-files &#8221;.h&#8221;. The exception is test code files where an underscore is used
+[0..9] are allowed. C++ source files should be suffixed “.cpp” and header
+files “.h”. The exception is test code files where an underscore is used
 to separate the name of what is tested and a suffix showing that it is a
-test, e.g. a unit with the name &#8216;mymodule.cpp&#8217;/&#8217;mymodule.h&#8217; would have a
+test, e.g. a unit with the name ‘mymodule.cpp’/’mymodule.h’ would have a
 corresponding unit test implemented in a file named
-&#8216;mymodule_unittest.cpp&#8217;.</p>
+‘mymodule_unittest.cpp’.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">The repository meta data files such as the readme, license and makefiles are allowed to use upper case letters in their naming.</p>
@@ -286,7 +400,7 @@ corresponding unit test implemented in a file named
 <p class="first admonition-title">Note</p>
 <p class="last">The <a class="reference external" href="https://www.raspberrypi.org/documentation/remote-access/ip-address.md">Raspberry Pi documentation</a> describes how to find a new device on the network. Finding the IP address for our device will work in the same manner.</p>
 </div>
-<p>The default user on the PELUX image is <cite>root</cite> and it doesn&#8217;t ask for a password logging in via SSH. Use <cite>scp</cite> to copy your binary to the target.</p>
+<p>The default user on the PELUX image is <cite>root</cite> and it doesn’t ask for a password logging in via SSH. Use <cite>scp</cite> to copy your binary to the target.</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>scp build/template-service root@&lt;ip address&gt;:
 </pre></div>
 </div>
@@ -299,80 +413,69 @@ corresponding unit test implemented in a file named
 </div>
 
 
+           </div>
           </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../ci-and-cd/index.html" class="btn btn-neutral" title="Continuous integration and deployment" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright Pelagicore AB.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="../../index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">Software Development Kit</a><ul>
-<li><a class="reference internal" href="#downloading-and-installing-the-sdk">Downloading and installing the SDK</a><ul>
-<li><a class="reference internal" href="#installing-the-sdk">Installing the SDK</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#using-the-sdk-to-cross-compile">Using the SDK to cross compile</a><ul>
-<li><a class="reference internal" href="#sourcing-environment">Sourcing Environment</a></li>
-<li><a class="reference internal" href="#cross-compiling">Cross Compiling</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#template-service">Template Service</a><ul>
-<li><a class="reference internal" href="#compilation">Compilation</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#source-code-repository-directory-structure">Source code repository directory structure</a><ul>
-<li><a class="reference internal" href="#mandatory-files">Mandatory files</a></li>
-<li><a class="reference internal" href="#directory-naming">Directory naming</a></li>
-<li><a class="reference internal" href="#file-naming">File naming</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#deploying-and-running-a-binary-executable-on-target">Deploying and running a binary executable on target</a></li>
-</ul>
-</li>
-</ul>
-<div class="relations">
-<h3>Related Topics</h3>
-<ul>
-  <li><a href="../../index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="../ci-and-cd/index.html" title="previous chapter">Continuous integration and deployment</a></li>
-  </ul></li>
-</ul>
-</div>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="../../_sources/chapters/sdk/index.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
-    <form class="search" action="../../search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-        </div>
-      </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="footer">
-      &copy;Pelagicore AB.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.5</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
-      
-      |
-      <a href="../../_sources/chapters/sdk/index.rst.txt"
-          rel="nofollow">Page source</a>
-    </div>
 
-    
+    </section>
 
-    
-  </body>
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'0.1.0-de05fe0 2017-07-18',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
 </html>
